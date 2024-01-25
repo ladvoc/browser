@@ -117,8 +117,7 @@ let launchChromium = async function(url) {
         '--autoplay-policy=no-user-gesture-required',
         '--noerrdialogs',
         '--disable-session-crashed-bubble',
-        '--check-for-update-interval=31536000',
-        '--disable-dev-shm-usage', // TODO: work out if we can enable this for devices with >1Gb of memory
+        '--check-for-update-interval=31536000'
       ];
 
       // Merge the chromium default and balena default flags
@@ -133,14 +132,6 @@ let launchChromium = async function(url) {
       else
       {
         console.log("Enabling GPU");
-        let gpuFlags = [
-          '--enable-zero-copy',
-          '--num-raster-threads=4',
-          '--ignore-gpu-blocklist',
-          '--enable-gpu-rasterization',
-        ];
-
-        flags = flags.concat(gpuFlags);
       }
     }
 
